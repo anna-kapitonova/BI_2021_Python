@@ -1,3 +1,5 @@
+#the conflit is inevitable
+
 converter={'pressure': {'bar':{'Pa':100000, 'kgf/cm2':1/0.980665},
                       'Pa':{'bar': 1/1000000, 'kgf/cm2':1/980665},
                       'kgf/cm2':{'bar':0.980665, 'Pa':980665}},
