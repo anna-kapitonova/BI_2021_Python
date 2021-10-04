@@ -2,9 +2,9 @@ name: PEP-8
 
 on:
   push:
-    branches: [ master, main, HW1_nucleic_acids, second_homework, second_homework_conflict ]
+    branches: "**"
   pull_request:
-    branches: [ master, main, HW1_nucleic_acids, second_homework, second_homework_conflict ]
+    branches: "**"
 
 jobs:
   build:
