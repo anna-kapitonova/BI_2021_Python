@@ -5,7 +5,7 @@ while True:
     if command == "exit":
         print("Good luck!")
         break
-    elif command!="transcribe" and command!="reverse" and command!="complement" and command!="reverse complement":
+    elif command not in {"transcribe", "reverse", "complement", "reverse complement"}:
         print("The command doesn't exist. Try again!")
         continue
     else:
