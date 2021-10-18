@@ -1,7 +1,7 @@
 wrong_alphabet = 'BbDdEeFfHhIiJjKkLlMmNnOoPpQqRrSsVvWwYyZz'
 while True:
     print("Enter command")
-    command = str(input())
+    command = input()
     if command == "exit":
         print("Good luck!")
         break
