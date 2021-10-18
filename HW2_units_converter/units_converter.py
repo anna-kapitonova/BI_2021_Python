@@ -1,4 +1,4 @@
-# this message is needed for conflict
+# this message was needed for conflict
 
 converter = {'pressure': {'bar': {'Pa': 100000, 'kgf/cm2': 1 / 0.980665},
                           'Pa': {'bar': 1 / 1000000, 'kgf/cm2': 1 / 980665},
