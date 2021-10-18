@@ -1,4 +1,4 @@
-wrong_alphabet = 'BbDdEeFfHhIiJjKkLlMmNnOoPpQqRrSsVvWwYyZz'
+true_alphabet = set("ATGCatgcUu")
 while True:
     print("Enter command")
     command = input()
