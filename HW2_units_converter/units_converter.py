@@ -10,18 +10,27 @@ converter = {'pressure': {'bar': {'Pa': 100000, 'kgf/cm2': 1 / 0.980665},
                                'mCi': {'Bq': 3700000, 'dpm': 222000000},
                                'dpm': {'Bq': 1 / 60, 'mCi': 1 / 222000000}}}
 while True:
-    print("Enter type of physical value")
+    print("Enter type of physical value (pressure, speed and radioactivity available)")
     phys = str(input())
     if phys == "end":
         print("Good luck!")
         break
+    elif phys not in {"pressure", "speed", "radioactivity"}:
+        print("The command doesn't exist. Try again!")
+        continue
     else:
         while True:
-            print("Enter original units")
-            a_units = str(input())
-            print("Enter required units")
-            b_units = str(input())
+            print("Enter original units (bar, Pa, kgf/cm2; km/h, mph, m/s; Bq, mCi, dpm)")
+            a_units = input()
+            print("Enter required units (bar, Pa, kgf/cm2; km/h, mph, m/s; Bq, mCi, dpm)")
+            b_units = input()
             print("Enter number")
-            number = float(input())
+            while True:
+                number = float(input())
+                if number <= 0:
+                    print("Please, enter only positive numbers")
+                    continue
+                else:
+                  break
             print(converter[phys][a_units][b_units] * number, b_units, sep=' ')
             break
