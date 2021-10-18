@@ -1,8 +1,8 @@
 true_alphabet = set("ATGCatgcUu")
 not_compatible = [{"T", "U"}, {"T", "u"}, {"t", "u"}, {"t", "U"}]
-transcribing_dictionary = {"A":"U", "a":"u", "T":"A", "t":"a", "G":"C", "g":"c", "C":"G", "c":"g"}
-complement_dictionary_RNA = {"A":"U", "a":"u", "U":"A", "u":"a", "G":"C", "g":"c", "C":"G", "c":"g"}
-complement_dictionary_DNA = {"A":"T", "a":"t", "T":"A", "t":"a", "G":"C", "g":"c", "C":"G", "c":"g"}
+transcribing_dictionary = {"A": "U", "a": "u", "T": "A", "t": "a", "G": "C", "g": "c", "C": "G", "c": "g"}
+complement_dictionary_RNA = {"A": "U", "a": "u", "U": "A", "u": "a", "G": "C", "g": "c", "C": "G", "c": "g"}
+complement_dictionary_DNA = {"A": "T", "a": "t", "T": "A", "t": "a", "G": "C", "g": "c", "C": "G", "c": "g"}
 while True:
     print("Enter command")
     command = input()
