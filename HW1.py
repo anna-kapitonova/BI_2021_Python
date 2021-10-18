@@ -1,4 +1,8 @@
 true_alphabet = set("ATGCatgcUu")
+not_compatible = [{"T", "U"}, {"T", "u"}, {"t", "u"}, {"t", "U"}]
+transcribing_dictionary = {"A":"U", "a":"u", "T":"A", "t":"a", "G":"C", "g":"c", "C":"G", "c":"g"}
+complement_dictionary_RNA = {"A":"U", "a":"u", "U":"A", "u":"a", "G":"C", "g":"c", "C":"G", "c":"g"}
+complement_dictionary_DNA = {"A":"T", "a":"t", "T":"A", "t":"a", "G":"C", "g":"c", "C":"G", "c":"g"}
 while True:
     print("Enter command")
     command = input()
@@ -9,96 +13,56 @@ while True:
         print("The command doesn't exist. Try again!")
         continue
     else:
-        permission = True
-        while permission:
+        while True:
             print("Enter sequence")
-            NA = str(input())
+            nucleic_acid = input()
             n = 0
-            for i in wrong_alphabet:
-                if i in NA:
+            for i in nucleic_acid:
+                if i not in true_alphabet:
+                    n += 1
+            for letter1, letter2 in not_compatible:
+                if letter1 in nucleic_acid and letter2 in nucleic_acid:
                     n += 1
             if n > 0:
-                print("Invalid alphabet. Try again!")
-                continue
-            if ("U" in NA and "T" in NA) or ("u" in NA and "t" in NA) or ("U" in NA and "t" in NA) or ("u" in NA and "T" in NA):
                 print("Only RNA or DNA can be processed. Try again!")
                 continue
             else:
                 if command == "transcribe":
-                    if "U" not in NA and "u" not in NA:
-                        for i in NA:
-                            if i == "A":
-                                print("U", end="")
-                            elif i == "a":
-                                print("u", end="")
-                            elif i == "T":
-                                print("A", end="")
-                            elif i == "t":
-                                print("a", end="")
-                            elif i == "G":
-                                print("C", end="")
-                            elif i == "g":
-                                print("c", end="")
-                            elif i == "C":
-                                print("G", end="")
-                            elif i == "c":
-                                print("g", end="")
-                        print("", end="\n")
+                    if "U" not in nucleic_acid and "u" not in nucleic_acid:
+                        answer = []
+                        for i in nucleic_acid:
+                            answer.append(transcribing_dictionary[i])
+                        print("".join(answer))
+                        break
                     else:
                         print("Error: RNA cannot be transcribed")
-                    break
+                        continue
                 elif command == "reverse":
-                    print(NA[::-1])
+                    print(nucleic_acid[::-1])
                     break
                 elif command == "complement":
-                    for i in NA:
-                        if i == "A":
-                            if "U" in NA or "u" in NA:
-                                print("U", end="")
-                            else:
-                                print("T", end="")
-                        elif i == "a":
-                            if "U" in NA or "u" in NA:
-                                print("u", end="")
-                            else:
-                                print("t", end="")
-                        elif i == "T":
-                            print("A", end="")
-                        elif i == "t":
-                            print("a", end="")
-                        elif i == "G":
-                            print("C", end="")
-                        elif i == "g":
-                            print("c", end="")
-                        elif i == "C":
-                            print("G", end="")
-                        elif i == "c":
-                            print("g", end="")
-                    print("", end="\n")
-                    break
+                    if "U" not in nucleic_acid and "u" not in nucleic_acid:
+                        answer = []
+                        for i in nucleic_acid:
+                            answer.append(complement_dictionary_DNA[i])
+                        print("".join(answer))
+                        break
+                    else:
+                        answer = []
+                        for i in nucleic_acid:
+                            answer.append(complement_dictionary_RNA[i])
+                        print("".join(answer))
+                        break
                 elif command == "reverse complement":
-                    for i in NA[::-1]:
-                        if i == "A":
-                            if "U" in NA or "u" in NA:
-                                print("U", end="")
-                            else:
-                                print("T", end="")
-                        elif i == "a":
-                            if "U" in NA or "u" in NA:
-                                print("u", end="")
-                            else:
-                                print("t", end="")
-                        elif i == "T":
-                            print("A", end="")
-                        elif i == "t":
-                            print("a", end="")
-                        elif i == "G":
-                            print("C", end="")
-                        elif i == "g":
-                            print("c", end="")
-                        elif i == "C":
-                            print("G", end="")
-                        elif i == "c":
-                            print("g", end="")
-                    print("", end="\n")
-                    break
+                    if "U" not in nucleic_acid and "u" not in nucleic_acid:
+                        answer = []
+                        for i in nucleic_acid[::-1]:
+                            answer.append(complement_dictionary_DNA[i])
+                        print("".join(answer))
+                        break
+                    else:
+                        answer = []
+                        for i in nucleic_acid[::-1]:
+                            answer.append(complement_dictionary_RNA[i])
+                        print("".join(answer))
+                        break
