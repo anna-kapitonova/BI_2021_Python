@@ -1,5 +1,4 @@
 # 1. Filter based on GC-content + 3. Filter based on length
-
 def length_and_gc_count_filter(file_path, length_bounds, gc_bounds,
                                save_filtered, good_lines, bad_lines):
     if type(length_bounds) != tuple:
@@ -26,15 +25,13 @@ def length_and_gc_count_filter(file_path, length_bounds, gc_bounds,
                     bad_lines.add(number)
                     bad_lines.add(number + 1)
                     bad_lines.add(number + 2)
-  
-  
-# 2. Filter based on quality + saving the result to files
 
+# 2. Filter based on quality + saving the result to files
 def quality_filter(file_path, output_file_good, output_file_bad, quality_threshold,
                    save_filtered, good_lines, bad_lines):
     with open(file_path) as file:
-        counter = 0 # counter for fourth lines with nucleic acid sequence
-        number = 0 # ordinal number
+        counter = 0  # counter for fourth lines with nucleic acid sequence
+        number = 0  # ordinal number
         for line in file:
             counter += 1
             number += 1
@@ -43,7 +40,7 @@ def quality_filter(file_path, output_file_good, output_file_bad, quality_thresho
                 quality_seq = line.strip()
                 sum_quality = 0
                 for symbol in quality_seq:
-                    sum_quality += (ord(symbol) - 33) # count Q-score
+                    sum_quality += (ord(symbol) - 33)  # count Q-score
                 mean_quality = sum_quality/len(quality_seq)
                 if mean_quality <= quality_threshold and number in good_lines:
                     good_lines.remove(number - 3)
@@ -55,14 +52,14 @@ def quality_filter(file_path, output_file_good, output_file_bad, quality_thresho
                         bad_lines.add(number - 2)
                         bad_lines.add(number - 1)
                         bad_lines.add(number)
-    with open(file_path) as file: #save filtered reads
+    with open(file_path) as file:  # save passed reads
         with open(output_file_good, "w") as out:
             number = 0            
             for line in file:
                 number += 1
                 if number in good_lines:
                     out.write(line)
-    if save_filtered is True: #save failed reads
+    if save_filtered is True:  # save filtered reads
         with open(file_path) as file:
             with open(output_file_bad, "w") as out:
                 number = 0            
@@ -70,30 +67,22 @@ def quality_filter(file_path, output_file_good, output_file_bad, quality_thresho
                     number += 1
                     if number in bad_lines:
                         out.write(line)
-                        
-                        
-# Main function, combining all previous in one algorithm
 
+# Main function, combining all previous in one algorithm
 def main(input_fastq, output_file_prefix,
          gc_bounds = (0, 100), length_bounds = (0, 2**32), 
          quality_threshold = 0, save_filtered = False):
-    
     file_path = input_fastq
     output_file_good = output_file_prefix + "_passed.fastq"
     output_file_bad = output_file_prefix + "_failed.fastq"
-    
     good_lines = set()
     bad_lines = set()
-    
     length_and_gc_count_filter(file_path, length_bounds, gc_bounds,
                                save_filtered, good_lines, bad_lines)
-    
     quality_filter(file_path, output_file_good, output_file_bad,
                    quality_threshold, save_filtered, good_lines, bad_lines)
-    
-    
-# Receiving arguments from user
 
+# Receiving arguments from user
 print("Welcome to fastq_filtrator!")
 print("Enter path to fastq file")
 input_fastq = input()
