@@ -1,4 +1,5 @@
 # 1. Filter based on GC-content + 3. Filter based on length
+
 def length_and_gc_count_filter(file_path, length_bounds, gc_bounds,
                                save_filtered, good_lines, bad_lines):
     if type(length_bounds) != tuple:
@@ -26,7 +27,9 @@ def length_and_gc_count_filter(file_path, length_bounds, gc_bounds,
                     bad_lines.add(number + 1)
                     bad_lines.add(number + 2)
 
+
 # 2. Filter based on quality + saving the result to files
+
 def quality_filter(file_path, output_file_good, output_file_bad, quality_threshold,
                    save_filtered, good_lines, bad_lines):
     with open(file_path) as file:
@@ -68,7 +71,9 @@ def quality_filter(file_path, output_file_good, output_file_bad, quality_thresho
                     if number in bad_lines:
                         out.write(line)
 
+
 # Main function, combining all previous in one algorithm
+
 def main(input_fastq, output_file_prefix,
          gc_bounds = (0, 100), length_bounds = (0, 2**32), 
          quality_threshold = 0, save_filtered = False):
@@ -82,7 +87,9 @@ def main(input_fastq, output_file_prefix,
     quality_filter(file_path, output_file_good, output_file_bad,
                    quality_threshold, save_filtered, good_lines, bad_lines)
 
+
 # Receiving arguments from user
+
 print("Welcome to fastq_filtrator!")
 print("Enter path to fastq file")
 input_fastq = input()
