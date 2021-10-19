@@ -1,6 +1,6 @@
 ## HW3 - Fastq-filtrator for operations with fastq-files
 
-The program can:
+The program functions:
 1. Filter reads based on GC-content
 2. Filter reads based on length
 3. Filter reads based on quality (Q-score)
