@@ -57,7 +57,7 @@ def quality_filter(file_path, output_file_good, output_file_bad, quality_thresho
                         bad_lines.add(number)
     with open(file_path) as file:  # save passed reads
         with open(output_file_good, "w") as out:
-            number = 0            
+            number = 0
             for line in file:
                 number += 1
                 if number in good_lines:
@@ -65,7 +65,7 @@ def quality_filter(file_path, output_file_good, output_file_bad, quality_thresho
     if save_filtered is True:  # save filtered reads
         with open(file_path) as file:
             with open(output_file_bad, "w") as out:
-                number = 0            
+                number = 0
                 for line in file:
                     number += 1
                     if number in bad_lines:
@@ -75,8 +75,8 @@ def quality_filter(file_path, output_file_good, output_file_bad, quality_thresho
 # Main function, combining all previous in one algorithm
 
 def main(input_fastq, output_file_prefix,
-         gc_bounds = (0, 100), length_bounds = (0, 2**32), 
-         quality_threshold = 0, save_filtered = False):
+         gc_bounds=(0, 100), length_bounds=(0, 2**32),
+         quality_threshold=0, save_filtered=False):
     file_path = input_fastq
     output_file_good = output_file_prefix + "_passed.fastq"
     output_file_bad = output_file_prefix + "_failed.fastq"
