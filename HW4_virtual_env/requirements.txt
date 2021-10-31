@@ -1,0 +1,12 @@
+google
+math
+typing
+kivy
+bs4
+requests
+biopython
+aiohttp
+pandas
+scipy
+scanpy
+opencv-python
