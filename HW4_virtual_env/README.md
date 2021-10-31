@@ -7,7 +7,7 @@ However, this code is not easy to use for others...
 **The file requirements.txt contains a list of all Python libraries, necessary to launch the file pain.py**
 
 
-The script was tested on macOS Big Sur 11.6, Python 3.10.0.
+The script was tested on macOS Big Sur 11.6, Python 3.9.7
 
 #### Instructions:
 - download the files pain.py and requirements.txt
