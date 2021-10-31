@@ -11,6 +11,10 @@ The script was tested on macOS Big Sur 11.6, Python 3.8.5.
 
 #### Instructions:
 - download the files pain.py and requirements.txt
+- install the library for creating virtual environments (in case tou do not have it)
+```
+python -m pip install virtualenv
+```
 - create the virtual environment in your current directory
 ```
 python -m virtualenv any_name_that_you_like
