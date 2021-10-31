@@ -1,12 +1,13 @@
-google
-math
-typing
+google-api-python-client
 kivy
 bs4
-requests
 biopython
 aiohttp
 pandas
 scipy
 scanpy
 opencv-python
+lxml
+python-math
+typing
+requests
