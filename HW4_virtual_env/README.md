@@ -11,4 +11,19 @@ The script was tested on macOS Big Sur 11.6, Python 3.8.5.
 
 #### Instructions:
 - download the files pain.py and requirements.txt
-- 
+- create the virtual environment in your current directory
+```
+python -m virtualenv any_name_that_you_like
+```
+- activate the virtual environment
+```
+source any_name_that_you_like/bin/activate
+```
+- install necessary packages listed in requirements.txt
+```
+python -m pip install -r requirements.txt
+```
+- launch pain.py
+```
+python pain.py
+```
