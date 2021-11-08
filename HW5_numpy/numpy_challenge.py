@@ -11,7 +11,7 @@ c = np.arange(13)
 def matrix_multiplication(a, b):
     print(a @ b)
 
-    
+
 # Function multiplication_check accepts a list of matrixes
 # and prints "True", if they could be multiplied as they are ordered in the list,
 # and "False", if they could not be multiplied
