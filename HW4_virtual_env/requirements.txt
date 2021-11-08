@@ -1,0 +1,13 @@
+google-api-python-client
+kivy
+bs4
+biopython
+aiohttp
+pandas
+scipy
+scanpy
+opencv-python
+lxml
+python-math
+typing
+requests
