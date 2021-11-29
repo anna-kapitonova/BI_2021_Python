@@ -19,7 +19,7 @@ def matrix_multiplication(a, b):
 
 def multiplication_check(list_mat):
     for i in range(len(list_mat)-1):
-        if (list_mat[i+1]).shape[0] != (list_mat[i]).shape[1]:
+        if list_mat[i+1].shape[0] != list_mat[i].shape[1]:
             return False
     return True
 
