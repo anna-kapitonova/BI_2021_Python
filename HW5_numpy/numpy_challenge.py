@@ -55,7 +55,7 @@ def compute_multidimensional_distance(a, b):
     sum_d = 0
     for i in range(len(a)):
         sum_d += (a[i]-b[i])**2
-    return(np.sqrt(sum_d))
+    return np.sqrt(sum_d)
 
 
 # Function compute_pair_distances accepts 2d arrays,
