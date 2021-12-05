@@ -5,3 +5,4 @@ Homework for Python course in Bioinformatic Institute
 ### HW2 - Units converter for speed, pressure and radioactivity
 ### HW3 - Fastq-filtrator for operations with fastq-files
 ### HW4 - Virtual environment requirements
+### HW6 - Modifications of functions
