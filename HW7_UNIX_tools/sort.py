@@ -20,7 +20,7 @@ if not sys.stdin.isatty():
     print('\n'.join(input_file))
 
 
-# otherwise, read the given filename                                            
+# otherwise, read the given filename
 else:
     parser = argparse.ArgumentParser(description="UNIX tool sort analog: sort lines of text and binary files")
     parser.add_argument('file', help='print the filename')
