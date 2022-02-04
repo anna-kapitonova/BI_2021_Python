@@ -6,3 +6,4 @@ Homework for Python course in Bioinformatic Institute
 ### HW3 - Fastq-filtrator for operations with fastq-files
 ### HW4 - Virtual environment requirements
 ### HW5 - Numpy functions for multiplication of matrixes and distance calculations
+### HW6 - Modifications of functions
