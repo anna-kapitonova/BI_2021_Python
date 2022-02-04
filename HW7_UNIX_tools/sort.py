@@ -7,7 +7,7 @@ def sort_tool(file):
     with open(file) as f:
         f_lines = f.read().splitlines()
         f_lines.sort()
-    return('\n'.join(f_lines))
+    return '\n'.join(f_lines)
 
 
 def main():
