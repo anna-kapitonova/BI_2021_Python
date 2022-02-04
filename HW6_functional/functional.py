@@ -2,7 +2,8 @@ def sequential_map(*funcs):
     cont = funcs[-1]
     funcs = funcs[:-1]
     for func in funcs:
-        cont = func(cont)
+        for i in range(len(cont)):
+            cont[i] = func(cont[i])
     return cont
 
 
@@ -22,7 +23,10 @@ def consensus_filter(*funcs):
 
 def conditional_reduce(func1, func2, cont):
     good_cont = list(filter(func1, cont))
-    return func2(good_cont[0], good_cont[1])
+    while len(good_cont) != 1:
+        good_cont[0] = func2(good_cont[0], good_cont[1])
+        good_cont.pop(1)
+    return good_cont[0]
 
 
 def func_chain(*funcs):
@@ -37,4 +41,5 @@ def func_chain(*funcs):
 def sequential_map_new(*funcs):
     cont = funcs[-1]
     funcs = funcs[:-1]
-    return func_chain(*funcs)(cont)
+    chain = func_chain(*funcs)
+    return list(map(chain, cont))
