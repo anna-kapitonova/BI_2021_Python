@@ -21,10 +21,7 @@ def consensus_filter(*funcs):
 
 
 def conditional_reduce(func1, func2, cont):
-    good_cont = list()
-    for i in cont:
-        if func1(i):
-            good_cont.append(i)
+    good_cont = list(filter(func1, cont))
     return func2(good_cont[0], good_cont[1])
 
 
