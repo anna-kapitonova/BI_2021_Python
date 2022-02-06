@@ -4,4 +4,8 @@ The program takes commands from user in an infinite cycle. After the command it 
 
 Command list:
 
-**exit** — termination of the program, **transcribe** — print transcribed sequence (input 5'-3' -> output 3'-5', **only for DNA!**), **reverse** — print reverse sequence, **complement** — print complement sequence, **reverse complement** — print reverse complement sequence.
+- **exit** — termination of the program
+- **transcribe** — print transcribed sequence (input 5'-3' -> output 3'-5', **only for DNA!**)
+- **reverse** — print reverse sequence
+- **complement** — print complement sequence
+- **reverse complement** — print reverse complement sequence
