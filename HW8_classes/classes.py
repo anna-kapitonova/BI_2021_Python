@@ -61,7 +61,7 @@ class RNA:
             print('RNA should contain only nucleotides from set {AGCUagcu}')
 
     def __repr__(self):
-         return self.seq
+        return self.seq
 
     def translation(self):
         if self.protein_coding is True:
@@ -108,7 +108,7 @@ class Fasta:
 
     def __repr__(self):
         return self.path
-        
+
     def __str__(self):
         return self.path
 
@@ -131,7 +131,7 @@ class Fasta:
                     length += len(line)-1
         self.gc = round((c + g)/length*100, 1)
         print(self.gc)
-    
+
     def count_all(self):
         self.count_number()
         self.count_gc()
