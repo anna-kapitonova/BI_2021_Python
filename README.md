@@ -8,3 +8,8 @@ Homework for Python course in Bioinformatic Institute
 ### HW5 - Numpy functions for multiplication of matrixes and distance calculations
 ### HW6 - Modifications of functions
 ### HW7 - Python analogs of UNIX tools
+
+---
+The second semester
+
+### HW8 - Different classes, including for work with RNA sequences and fasta-files
