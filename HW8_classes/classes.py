@@ -95,7 +95,7 @@ class PositiveSet(set):
     def add(self, *elements):
         for element in elements:
             if element > 0:
-                self.set.add(element)
+                super().add(element)
 
 
 # task 4
