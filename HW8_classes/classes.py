@@ -32,28 +32,28 @@ class Dogs:
 
 class RNA:
     def __init__(self, sequence, protein_coding=True):
-        if isinstance(sequence, str) and set(sequence).issubset(good_nucleotides):
+        self.good_nucleotides = set('AGCUagcu')
+        self.code = {"UUU": "F", "UUC": "F", "UUA": "L", "UUG": "L",
+                     "UCU": "S", "UCC": "S", "UCA": "S", "UCG": "S",
+                     "UAU": "Y", "UAC": "Y", "UAA": "*", "UAG": "*",
+                     "UGU": "C", "UGC": "C", "UGA": "*", "UGG": "W",
+                     "CUU": "L", "CUC": "L", "CUA": "L", "CUG": "L",
+                     "CCU": "P", "CCC": "P", "CCA": "P", "CCG": "P",
+                     "CAU": "H", "CAC": "H", "CAA": "Q", "CAG": "Q",
+                     "CGU": "R", "CGC": "R", "CGA": "R", "CGG": "R",
+                     "AUU": "I", "AUC": "I", "AUA": "I", "AUG": "M",
+                     "ACU": "T", "ACC": "T", "ACA": "T", "ACG": "T",
+                     "AAU": "N", "AAC": "N", "AAA": "K", "AAG": "K",
+                     "AGU": "S", "AGC": "S", "AGA": "R", "AGG": "R",
+                     "GUU": "V", "GUC": "V", "GUA": "V", "GUG": "V",
+                     "GCU": "A", "GCC": "A", "GCA": "A", "GCG": "A",
+                     "GAU": "D", "GAC": "D", "GAA": "E", "GAG": "E",
+                     "GGU": "G", "GGC": "G", "GGA": "G", "GGG": "G"}
+         self.RNA_to_DNA = {"A": "T", "a": "t", "U": "A", "u": "a",
+                            "G": "C", "g": "c", "C": "G", "c": "g"}
+        if isinstance(sequence, str) and set(sequence).issubset(self.good_nucleotides):
             self.seq = sequence
             self.protein_coding = protein_coding
-            self.good_nucleotides = set('AGCUagcu')
-            self.code = {"UUU": "F", "UUC": "F", "UUA": "L", "UUG": "L",
-                    "UCU": "S", "UCC": "S", "UCA": "S", "UCG": "S",
-                    "UAU": "Y", "UAC": "Y", "UAA": "*", "UAG": "*",
-                    "UGU": "C", "UGC": "C", "UGA": "*", "UGG": "W",
-                    "CUU": "L", "CUC": "L", "CUA": "L", "CUG": "L",
-                    "CCU": "P", "CCC": "P", "CCA": "P", "CCG": "P",
-                    "CAU": "H", "CAC": "H", "CAA": "Q", "CAG": "Q",
-                    "CGU": "R", "CGC": "R", "CGA": "R", "CGG": "R",
-                    "AUU": "I", "AUC": "I", "AUA": "I", "AUG": "M",
-                    "ACU": "T", "ACC": "T", "ACA": "T", "ACG": "T",
-                    "AAU": "N", "AAC": "N", "AAA": "K", "AAG": "K",
-                    "AGU": "S", "AGC": "S", "AGA": "R", "AGG": "R",
-                    "GUU": "V", "GUC": "V", "GUA": "V", "GUG": "V",
-                    "GCU": "A", "GCC": "A", "GCA": "A", "GCG": "A",
-                    "GAU": "D", "GAC": "D", "GAA": "E", "GAG": "E",
-                    "GGU": "G", "GGC": "G", "GGA": "G", "GGG": "G"}
-            self.RNA_to_DNA = {"A": "T", "a": "t", "U": "A", "u": "a",
-                          "G": "C", "g": "c", "C": "G", "c": "g"}
         else:
             print('RNA should contain only nucleotides from set {AGCUagcu}')
 
