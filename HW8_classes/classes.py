@@ -50,7 +50,7 @@ class RNA:
                      "GAU": "D", "GAC": "D", "GAA": "E", "GAG": "E",
                      "GGU": "G", "GGC": "G", "GGA": "G", "GGG": "G"}
         self.RNA_to_DNA = {"A": "T", "a": "t", "U": "A", "u": "a",
-                            "G": "C", "g": "c", "C": "G", "c": "g"}
+                           "G": "C", "g": "c", "C": "G", "c": "g"}
         if isinstance(sequence, str) and set(sequence).issubset(self.good_nucleotides):
             self.seq = sequence
             self.protein_coding = protein_coding
@@ -173,7 +173,7 @@ class Fasta:
                                     four_mers[''.join(mer)] = 1
                                 mer = mer[1:]
         return four_mers
-        
+
     def hist_4mers(self):
         four_mers = self.dict_4mers()
         sum_mers = sum(four_mers.values())
