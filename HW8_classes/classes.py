@@ -84,7 +84,6 @@ class RNA:
 
 
 class PositiveSet(set):
-class PositiveSet(set):
     def __init__(self, *elements):
         new_set = set()
         for element in elements:
