@@ -29,34 +29,31 @@ class Dogs:
 
 # task 2
 
-good_nucleotides = set('AGCUagcu')
-
-code = {"UUU": "F", "UUC": "F", "UUA": "L", "UUG": "L",
-        "UCU": "S", "UCC": "S", "UCA": "S", "UCG": "S",
-        "UAU": "Y", "UAC": "Y", "UAA": "*", "UAG": "*",
-        "UGU": "C", "UGC": "C", "UGA": "*", "UGG": "W",
-        "CUU": "L", "CUC": "L", "CUA": "L", "CUG": "L",
-        "CCU": "P", "CCC": "P", "CCA": "P", "CCG": "P",
-        "CAU": "H", "CAC": "H", "CAA": "Q", "CAG": "Q",
-        "CGU": "R", "CGC": "R", "CGA": "R", "CGG": "R",
-        "AUU": "I", "AUC": "I", "AUA": "I", "AUG": "M",
-        "ACU": "T", "ACC": "T", "ACA": "T", "ACG": "T",
-        "AAU": "N", "AAC": "N", "AAA": "K", "AAG": "K",
-        "AGU": "S", "AGC": "S", "AGA": "R", "AGG": "R",
-        "GUU": "V", "GUC": "V", "GUA": "V", "GUG": "V",
-        "GCU": "A", "GCC": "A", "GCA": "A", "GCG": "A",
-        "GAU": "D", "GAC": "D", "GAA": "E", "GAG": "E",
-        "GGU": "G", "GGC": "G", "GGA": "G", "GGG": "G"}
-
-RNA_to_DNA = {"A": "T", "a": "t", "U": "A", "u": "a",
-              "G": "C", "g": "c", "C": "G", "c": "g"}
-
 
 class RNA:
     def __init__(self, sequence, protein_coding=True):
-        if type(sequence) != 'str' and set(sequence).issubset(good_nucleotides):
+        if isinstance(sequence, str) and set(sequence).issubset(good_nucleotides):
             self.seq = sequence
             self.protein_coding = protein_coding
+            self.good_nucleotides = set('AGCUagcu')
+            self.code = {"UUU": "F", "UUC": "F", "UUA": "L", "UUG": "L",
+                    "UCU": "S", "UCC": "S", "UCA": "S", "UCG": "S",
+                    "UAU": "Y", "UAC": "Y", "UAA": "*", "UAG": "*",
+                    "UGU": "C", "UGC": "C", "UGA": "*", "UGG": "W",
+                    "CUU": "L", "CUC": "L", "CUA": "L", "CUG": "L",
+                    "CCU": "P", "CCC": "P", "CCA": "P", "CCG": "P",
+                    "CAU": "H", "CAC": "H", "CAA": "Q", "CAG": "Q",
+                    "CGU": "R", "CGC": "R", "CGA": "R", "CGG": "R",
+                    "AUU": "I", "AUC": "I", "AUA": "I", "AUG": "M",
+                    "ACU": "T", "ACC": "T", "ACA": "T", "ACG": "T",
+                    "AAU": "N", "AAC": "N", "AAA": "K", "AAG": "K",
+                    "AGU": "S", "AGC": "S", "AGA": "R", "AGG": "R",
+                    "GUU": "V", "GUC": "V", "GUA": "V", "GUG": "V",
+                    "GCU": "A", "GCC": "A", "GCA": "A", "GCG": "A",
+                    "GAU": "D", "GAC": "D", "GAA": "E", "GAG": "E",
+                    "GGU": "G", "GGC": "G", "GGA": "G", "GGG": "G"}
+            self.RNA_to_DNA = {"A": "T", "a": "t", "U": "A", "u": "a",
+                          "G": "C", "g": "c", "C": "G", "c": "g"}
         else:
             print('RNA should contain only nucleotides from set {AGCUagcu}')
 
@@ -70,17 +67,17 @@ class RNA:
             for nucleotide in self.seq.upper():
                 codon.append(nucleotide)
                 if len(codon) == 3:
-                    protein.append(code[''.join(codon)])
+                    protein.append(self.code[''.join(codon)])
                     codon = []
-            print(''.join(protein))
+            return(''.join(protein))
         else:
             print('It is not a protein-coding RNA, translation is not possible')
 
     def reverse_transcription(self):
         dna = []
         for nucleotide in self.seq:
-            dna.append(RNA_to_DNA[nucleotide])
-        print(''.join(dna))
+            dna.append(self.RNA_to_DNA[nucleotide])
+        return(''.join(dna))
 
 
 # task 3
@@ -118,7 +115,7 @@ class Fasta:
             for line in file:
                 if line.startswith('>'):
                     self.number += 1
-        print(self.number)
+        return(self.number)
 
     def count_gc(self):
         self.gc = 0
@@ -130,7 +127,7 @@ class Fasta:
                     g += line.count('G')
                     length += len(line)-1
         self.gc = round((c + g)/length*100, 1)
-        print(self.gc)
+        return(self.gc)
 
     def count_all(self):
         self.count_number()
@@ -159,7 +156,7 @@ class Fasta:
         ax.set_title("Distribution of sequence lengths over all sequences", size=20)
         plt.show()
 
-    def hist_4mers(self):
+    def dict_4mers(self):
         four_mers = {}
         with open(self.path) as file:
             for line in file:
@@ -174,6 +171,10 @@ class Fasta:
                                 except KeyError:
                                     four_mers[''.join(mer)] = 1
                                 mer = mer[1:]
+        return four_mers
+        
+    def hist_4mers(self):
+        four_mers = self.dict_4mers()
         sum_mers = sum(four_mers.values())
         for key, value in four_mers.items():
             four_mers[key] = value/sum_mers
