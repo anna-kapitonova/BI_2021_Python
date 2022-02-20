@@ -49,7 +49,7 @@ class RNA:
                      "GCU": "A", "GCC": "A", "GCA": "A", "GCG": "A",
                      "GAU": "D", "GAC": "D", "GAA": "E", "GAG": "E",
                      "GGU": "G", "GGC": "G", "GGA": "G", "GGG": "G"}
-         self.RNA_to_DNA = {"A": "T", "a": "t", "U": "A", "u": "a",
+        self.RNA_to_DNA = {"A": "T", "a": "t", "U": "A", "u": "a",
                             "G": "C", "g": "c", "C": "G", "c": "g"}
         if isinstance(sequence, str) and set(sequence).issubset(self.good_nucleotides):
             self.seq = sequence
