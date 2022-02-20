@@ -84,11 +84,13 @@ class RNA:
 
 
 class PositiveSet(set):
+class PositiveSet(set):
     def __init__(self, *elements):
-        self.set = set()
+        new_set = set()
         for element in elements:
             if element > 0:
-                self.set.add(element)
+                new_set.add(element)
+        super().__init__(new_set)
 
     def add(self, *elements):
         for element in elements:
