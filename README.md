@@ -13,3 +13,5 @@ Homework for Python course in Bioinformatic Institute
 The second semester
 
 ### HW8 - Different classes, including for work with RNA sequences and fasta-files
+### HW9 - Work with pandas dataframes
+### HW10 - Create API for GENSCAN Web Server
