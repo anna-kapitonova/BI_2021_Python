@@ -29,7 +29,7 @@ def run_genscan(sequence=None, sequence_file=None, organism="Vertebrate",
 
     form_url = 'http://hollywood.mit.edu/cgi-bin/genscanw_py.cgi'
 
-    if sequence_file!=None:
+    if sequence_file is not None:
         sequence_file = open(sequence_file, "rb")
         files = {'-u': sequence_file}
 
@@ -91,7 +91,7 @@ def run_genscan(sequence=None, sequence_file=None, organism="Vertebrate",
 
 
 if __name__ == "__main__":
-    
+
     print('Example usage: for human gene nucleophosmin 1 with default settings')
     result = run_genscan(sequence_file='./data/npm1.fasta', organism="Vertebrate",
                          exon_cutoff=1.00, sequence_name="NPM1", print_options='Predicted peptides only')
