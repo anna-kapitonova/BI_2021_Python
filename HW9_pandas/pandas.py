@@ -31,7 +31,7 @@ data_selected.to_csv('train_part.csv')
 # perform EDA of chosen dataset (including correlations, distribution plots)
 
 
-breast_cancer = pd.read_csv(os.path.join('.', 'data', 'data.csv')
+breast_cancer = pd.read_csv(os.path.join('.', 'data', 'data.csv'))
 breast_cancer.drop('Unnamed: 32', axis=1, inplace=True)
 breast_cancer.set_index('id')
 breast_cancer = breast_cancer.loc[:, :'fractal_dimension_mean']
