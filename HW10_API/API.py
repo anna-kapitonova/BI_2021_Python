@@ -37,8 +37,8 @@ def run_genscan(sequence=None, sequence_file=None, organism="Vertebrate",
             '-o': organism,
             '-e': exon_cutoff,
             '-n': sequence_name,
-            '-p': print_options,
-        }
+            '-p': print_options
+            }
 
             resp = requests.post(form_url, data=payload, files=files)
 
