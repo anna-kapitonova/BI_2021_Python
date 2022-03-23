@@ -30,18 +30,17 @@ def run_genscan(sequence=None, sequence_file=None, organism="Vertebrate",
     form_url = 'http://hollywood.mit.edu/cgi-bin/genscanw_py.cgi'
 
     if sequence_file is not None:
-        sequence_file = open(sequence_file, "rb")
-        files = {'-u': sequence_file}
+        with open(sequence_file, "rb") as sequence_file:
+            files = {'-u': sequence_file}
 
-        payload = {
+            payload = {
             '-o': organism,
             '-e': exon_cutoff,
             '-n': sequence_name,
             '-p': print_options,
         }
 
-        resp = requests.post(form_url, data=payload, files=files)
-        sequence_file.close()
+            resp = requests.post(form_url, data=payload, files=files)
 
     else:
         payload = {
