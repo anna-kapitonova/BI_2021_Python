@@ -33,12 +33,10 @@ def run_genscan(sequence=None, sequence_file=None, organism="Vertebrate",
         with open(sequence_file, "rb") as sequence_file:
             files = {'-u': sequence_file}
 
-            payload = {
-            '-o': organism,
-            '-e': exon_cutoff,
-            '-n': sequence_name,
-            '-p': print_options
-            }
+            payload = {'-o': organism,
+                       '-e': exon_cutoff,
+                       '-n': sequence_name,
+                       '-p': print_options}
 
             resp = requests.post(form_url, data=payload, files=files)
 
