@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -30,7 +31,7 @@ data_selected.to_csv('train_part.csv')
 # perform EDA of chosen dataset (including correlations, distribution plots)
 
 
-breast_cancer = pd.read_csv('./data/data.csv')
+breast_cancer = pd.read_csv(os.path.join('.', 'data', 'data.csv')
 breast_cancer.drop('Unnamed: 32', axis=1, inplace=True)
 breast_cancer.set_index('id')
 breast_cancer = breast_cancer.loc[:, :'fractal_dimension_mean']
@@ -51,8 +52,8 @@ sns.pairplot(breast_cancer.iloc[:, 1:], hue='diagnosis')
 # realize functions read_gff and read_bed6
 
 
-def read_gff(file, names=['chr', 'source', 'type', 'start', 'end',
-                          'score', 'strand', 'phase', 'attributes']):
+def read_gff(file, names=('chr', 'source', 'type', 'start', 'end',
+                          'score', 'strand', 'phase', 'attributes')):
     '''
     reads table from gff format
 
@@ -67,8 +68,8 @@ def read_gff(file, names=['chr', 'source', 'type', 'start', 'end',
     return df
 
 
-def read_bed6(file, names=['chr', 'start', 'end',
-                           'name', 'score', 'strand']):
+def read_bed6(file, names=('chr', 'start', 'end',
+                           'name', 'score', 'strand')):
     '''
     reads table from gff format
 
@@ -83,8 +84,8 @@ def read_bed6(file, names=['chr', 'start', 'end',
     return df
 
 
-gff = read_gff('data/rrna_annotation.gff')
-bed = read_bed6('data/alignment.bed')
+gff = read_gff(os.path.join('data', 'rrna_annotation.gff'))
+bed = read_bed6(os.path.join('data', 'alignment.bed'))
 
 
 # from column 'attributes' save only data about rRNA type (16S, 23S, 5S)
