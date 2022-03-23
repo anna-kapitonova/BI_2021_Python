@@ -62,7 +62,7 @@ def run_genscan(sequence=None, sequence_file=None, organism="Vertebrate",
     for peptide in re.compile(r"aa\n[A-Y\n]+").findall(soup_string):
         peptide_list.append(peptide[2:].replace('\n', ""))
 
-    # extracting precited exons
+    # extracting predicted exons
     exon_list = []
     i = 1
 
@@ -70,7 +70,7 @@ def run_genscan(sequence=None, sequence_file=None, organism="Vertebrate",
         exon_list.append((i, int(exon[11:18]), int(exon[18:25])))
         i += 1
 
-    # extracting precited introns from table with exons
+    # extracting predicted introns from table with exons
     intron_list = []
     i = 1
     n_bp = int(re.compile(r'fasta.+bp').findall(soup_string)[0][7:-2])
