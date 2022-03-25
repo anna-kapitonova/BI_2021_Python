@@ -6,12 +6,12 @@ import os
 
 # read table with metadata from file through pandas
 
-metadata = pd.read_csv(os.path.join('.', 'data', 'genotyping_data','metadata.csv'), index_col=0)
+metadata = pd.read_csv(os.path.join('.', 'data', 'genotyping_data', 'metadata.csv'), index_col=0)
 
 
 # read basic table from file through pandas
 
-genstudio = pd.read_csv(os.path.join('.', 'data', 'genotyping_data','genstudio.csv'), index_col=0, low_memory=False)
+genstudio = pd.read_csv(os.path.join('.', 'data', 'genotyping_data', 'genstudio.csv'), index_col=0, low_memory=False)
 
 
 # transform values from column 'Position' into two columns 'start' and 'end'
@@ -22,7 +22,7 @@ for i in range(genstudio.shape[0]):
         genstudio.loc[i, 'Position_start'] = genstudio.loc[i, 'Position']
     else:
         genstudio.loc[i, 'Position_start'] = start_coordinate[0][:-1]
-    
+
     end_coordinate = re.compile(r'\-\d+').findall(genstudio.loc[i, 'Position'])
     if end_coordinate == []:
         genstudio.loc[i, 'Position_end'] = genstudio.loc[i, 'Position']
@@ -95,7 +95,7 @@ query = '''CREATE TABLE genstudio_with_metadata AS
                 SELECT genstudio.*, metadata.breed, metadata.sex
                 FROM   genstudio 
                 INNER JOIN metadata 
-                        ON genstudio.[Sample ID] = metadata.dna_chip_id'''
+                ON genstudio.[Sample ID] = metadata.dna_chip_id'''
 
 connection.execute(query)
 connection.commit()
