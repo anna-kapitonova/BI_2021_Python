@@ -93,8 +93,8 @@ connection.commit()
 
 query = '''CREATE TABLE genstudio_with_metadata AS
                 SELECT genstudio.*, metadata.breed, metadata.sex
-                FROM   genstudio 
-                INNER JOIN metadata 
+                FROM genstudio
+                INNER JOIN metadata
                 ON genstudio.[Sample ID] = metadata.dna_chip_id'''
 
 connection.execute(query)
