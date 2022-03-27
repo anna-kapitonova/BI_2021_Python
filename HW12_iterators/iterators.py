@@ -1,8 +1,7 @@
-import os
 import random
 
 
-## 1. Create a generator, that accepts the path to fasta-file and returns pairs (id, sequence).
+# 1. Create a generator, that accepts the path to fasta-file and returns pairs (id, sequence).
 
 
 def fasta_to_lists(path):
@@ -38,7 +37,7 @@ def fasta_reader(path):
     return (i for i in iter(iteration_list))
 
 
-## 2. Create a class (without inheritance), that reads sequences with some modifications.
+# 2. Create a class (without inheritance), that reads sequences with some modifications.
 # - minimum one argument - path to fasta-file
 # - object allows its iteration
 # - infinite iteration for sequeunces in file
@@ -84,11 +83,11 @@ class SeqModifier:
         seq_list_to_print = self.seq_list
 
         for i in range(self.n_seq):
-            if self.decision(): # probability check
+            if self.decision():  # probability check
                 deletion_start = random.randint(0, len(self.seq_list[i]) - self.n_to_mutate)
                 deletion_end = deletion_start + self.n_to_mutate
                 seq_list_to_print[i] = self.seq_list[i][:deletion_start]\
-                                        + self.seq_list[i][deletion_end:]
+                + self.seq_list[i][deletion_end:]
 
         self.iteration_list = [[x, y] for x, y in zip(self.ids_list, seq_list_to_print)]
 
@@ -97,13 +96,13 @@ class SeqModifier:
         seq_list_to_print = self.seq_list
 
         for i in range(self.n_seq):
-            if self.decision(): # probability check
+            if self.decision():  # probability check
 
-                for i in range(self.n_to_mutate): # we need n_aa mutations
-                    mutation_site = random.randint(0, len(self.seq_list[i]) - 1) # choose mutation site
+                for i in range(self.n_to_mutate):  # we need n_aa mutations
+                    mutation_site = random.randint(0, len(self.seq_list[i]) - 1)  # choose mutation site
                     seq_list_to_print[i] = self.seq_list[i][:mutation_site]\
-                                            + random.choice(self.list_for_choice)\
-                                            + self.seq_list[i][mutation_site + 1:]
+                    + random.choice(self.list_for_choice)\
+                    + self.seq_list[i][mutation_site + 1:]
 
         self.iteration_list = [[x, y] for x, y in zip(self.ids_list, seq_list_to_print)]
 
@@ -125,7 +124,7 @@ class SeqModifier:
         return self.iteration_list[self.cur_index][0] + " " + self.iteration_list[self.cur_index][1]
 
 
-## 1*. Create a generator iter_append(iterable, item), that "add" element item in the "end" of iterable.
+# 1*. Create a generator iter_append(iterable, item), that "add" element item in the "end" of iterable.
 
 
 def iter_append(iterable, item):
@@ -133,7 +132,7 @@ def iter_append(iterable, item):
     yield item
 
 
-## 2*. Create a function, that "unzip" nested lists.
+# 2*. Create a function, that "unzip" nested lists.
 
 
 def generator_from_nested_lists(list1):
