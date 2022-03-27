@@ -99,8 +99,9 @@ class SeqModifier:
 
                 for i in range(self.n_to_mutate):  # we need n_aa mutations
                     mutation_site = random.randint(0, len(self.seq_list[i]) - 1)  # choose mutation site
-                    seq_list_to_print[i] = self.seq_list[i][:mutation_site] + random.choice(self.list_for_choice) +\
-                    self.seq_list[i][mutation_site + 1:]
+                    seq_list_to_print[i] = (self.seq_list[i][:mutation_site] 
+                                            + random.choice(self.list_for_choice)
+                                            + self.seq_list[i][mutation_site + 1:])
 
         self.iteration_list = [[x, y] for x, y in zip(self.ids_list, seq_list_to_print)]
 
