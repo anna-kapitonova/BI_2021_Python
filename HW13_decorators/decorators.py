@@ -8,7 +8,7 @@ import requests
 def measure_time(func):
     def inner_function(*args, **kwargs):
         start = time.time()
-        result = func(*args, **kwargs)
+        func(*args, **kwargs)
         end = time.time()
         return (end - start)
     return inner_function
@@ -30,7 +30,7 @@ def function_logging(func):
                 print(" and ", end="")
 
         if len(kwargs) != 0:
-            print("keyword arguments: " 
+            print("keyword arguments: "
                   + ", ".join([(str(key) + "=" + str(value)) for key, value in kwargs.items()]),
                   end="")
 
